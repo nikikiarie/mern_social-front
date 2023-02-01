@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:5000";
+const baseUrl = "https://social2-api.onrender.com";
 
 // const accessToken = JSON.parse(
 //   JSON.parse(localStorage.getItem("persist:root")).user
