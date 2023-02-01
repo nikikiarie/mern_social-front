@@ -77,7 +77,7 @@ export const likeDislike = async (dispatch, userId, postId, token) => {
     const res = await privateRequest.patch(
       "/posts/like",
       { userId: userId, postId: postId },
-      { id: userId, friendId: postId },
+     
       {
         headers: {
           token: `Bearer ${token}`,

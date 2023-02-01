@@ -12,8 +12,7 @@ const OtherRegisterDetails = ({ type, data }) => {
   const [occupation, setOccupation] = useState("");
   const [password, setPassword] = useState("");
   const [dataz, setDataz] = useState({});
-  console.log(dataz);
-  console.log({ ...data });
+ 
 
   const [success, setSuccess] = useState(false);
   const { image, firstName, lastName } = data;
@@ -23,9 +22,10 @@ const OtherRegisterDetails = ({ type, data }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+
     const storageRef = ref(storage,image.name)
 
-    console.log(image)
+  
       
      const uploadTask = uploadBytesResumable(storageRef, image);
     
@@ -54,7 +54,7 @@ const OtherRegisterDetails = ({ type, data }) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
           const product = { firstName, lastName,location,occupation,picturePath:downloadURL,password,email}
-          console.log(product)
+          
           registerUser(product,navigate)
         });
       }
