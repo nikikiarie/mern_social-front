@@ -9,7 +9,6 @@ import Post from "./Post";
 
 const Posts = ({ type }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state);
   const profilePosts = useSelector((state) => state.profile.posts);
   const mainPagePosts = useSelector((state) => state.posts.posts);
   const token = useSelector((state)=>state.user.user.token)

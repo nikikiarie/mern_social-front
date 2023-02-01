@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { HiOutlineUserAdd } from "react-icons/hi";
-import User from "../assets/user.jpg";
-import { CiLocationOn } from "react-icons/ci";
+
 import { RiSuitcase2Line } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
 import { SlSocialTwitter } from "react-icons/sl";
@@ -23,7 +22,7 @@ const UserWidget = ({ type }) => {
 
   const { id } = useParams();
   console.log(id);
-  const typeA = type ==="profile" && id
+ 
 
   console.log(friends);
   const idd = user._id;
@@ -227,11 +226,7 @@ const SocialLeft = styled.div`
   align-items: center;
   padding-left: 5px;
 `;
-const SocialImg = styled.div`
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-`;
+
 
 const SocialItemDiv = styled.div`
   display: flex;

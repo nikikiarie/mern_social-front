@@ -1,5 +1,3 @@
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../firebase";
 import { privateRequest, publicRequest } from "../makeRequest";
 import { replaceLikedPost, setNewPost } from "./postSlice";
 import { replaceProfilePost, setOnePost } from "./profilePostSlice";

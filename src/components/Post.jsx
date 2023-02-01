@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import UserFriendWidget from "./UserFriendWidget";
-import Img1 from "../assets/img1.jpg";
+
 import { useNavigate } from "react-router-dom";
-import { BiComment, BiMessageSquareAdd  } from "react-icons/bi";
+import { BiComment  } from "react-icons/bi";
 import {HiUserAdd, HiUserRemove} from 'react-icons/hi'
 import { useDispatch, useSelector } from "react-redux";
 import { addRemoveFriend, likeDislike } from "../redux/apiCalls";
 import { AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
 import {FcLike} from 'react-icons/fc'
-import { replaceProfilePost } from "../redux/profilePostSlice";
 import { useState } from "react";
 
 const Post = ({ post, type }) => {
