@@ -75,7 +75,7 @@ export const likeDislike = async (dispatch, userId, postId, token) => {
   const id = userId;
   try {
     const res = await privateRequest.patch(
-      "/posts/like",
+      "/posts/like/",
       { userId: userId, postId: postId },
      
       {
