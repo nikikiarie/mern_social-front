@@ -15,8 +15,10 @@ console.log(id)
   console.log(friends)
   const dispatch = useDispatch()
 
+  const token = useSelector((state)=>state.user.user.token)
+
   const fetchFriends = async(m) =>{
-    const res = await privateRequest.get(`/users/friends/${m}`)
+    const res = await privateRequest.get(`/users/friends/${m}`,{headers:{token: `Bearer ${token}`}})
     console.log(res.data)
     dispatch(getFriends(res.data))
     id && setFriends(res.data)

@@ -6,9 +6,9 @@ const baseUrl = "http://localhost:5000";
 //   JSON.parse(localStorage.getItem("persist:root")).user
 // );
 
-const user = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-const actualUser = user?.user
-console.log(actualUser)
+// const user = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+// const actualUser = user?.user
+// console.log(actualUser)
 
 
 
@@ -18,7 +18,7 @@ export const publicRequest = axios.create({
 
 export const privateRequest = axios.create({
   baseURL: baseUrl,
-  headers: {
-    token: `Bearer ${actualUser?.token}`,
-  },
+  // headers: {
+  //   token: `Bearer ${actualUser?.token}`,
+  // },
 });

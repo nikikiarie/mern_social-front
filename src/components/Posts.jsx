@@ -12,6 +12,7 @@ const Posts = ({ type }) => {
   const user = useSelector((state) => state);
   const profilePosts = useSelector((state) => state.profile.posts);
   const mainPagePosts = useSelector((state) => state.posts.posts);
+  const token = useSelector((state)=>state.user.user.token)
 
   console.log(mainPagePosts)
  
@@ -25,7 +26,7 @@ const Posts = ({ type }) => {
     try {
       console.log("try");
       const res = await privateRequest.get(
-        type === "main" ? "/posts/" : `/posts/${m}`
+        type === "main" ? "/posts/" : `/posts/${m}`,{headers:{token:`Bearer ${token}`}}
       );
       console.log(res.data);
       typeA && setUserPosts(res.data)

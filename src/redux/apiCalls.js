@@ -28,21 +28,25 @@ export const registerUser = async (product) => {
   } catch (err) {}
 };
 
-export const newPost = async (post, dispatch, paramsId, useId) => {
+export const newPost = async (post, dispatch, paramsId, useId,token) => {
   console.log(post);
   console.log({ ...post });
   try {
-    const res = await privateRequest.post("/posts/new", { ...post });
+    const res = await privateRequest.post("/posts/new", { ...post },{headers: {
+      token: `Bearer ${token}`}
+    });
     console.log(res.data);
     dispatch(setNewPost(res.data));
     dispatch(setOnePost({ paramsId, useId, ...res.data }));
   } catch (err) {}
 };
 
-export const addRemoveFriend = async (dispatch, userId, postId,setError) => {
+export const addRemoveFriend = async (dispatch, userId, postId,setError,token) => {
   console.log(userId, postId);
   try {
-    const res = await privateRequest.patch("/users/friend/",{id:userId,friendId:postId});
+    const res = await privateRequest.patch("/users/friend/",{id:userId,friendId:postId},{headers: {
+      token: `Bearer ${token}`}
+    });
     console.log(res.data);
     dispatch(getFriends(res.data))
   } catch (err) {
@@ -52,10 +56,11 @@ export const addRemoveFriend = async (dispatch, userId, postId,setError) => {
   }
 };
 
-export const likeDislike = async(dispatch,userId,postId)=>{
+export const likeDislike = async(dispatch,userId,postId,token)=>{
   const id = userId
   try{
-    const res = await privateRequest.patch('/posts/like',{userId:userId,postId:postId})
+    const res = await privateRequest.patch('/posts/like',{userId:userId,postId:postId},{id:userId,friendId:postId},{headers: {
+      token: `Bearer ${token}`}})
     dispatch(replaceLikedPost(res.data))
     dispatch(replaceProfilePost({...res.data,id}))
     console.log(res.data)

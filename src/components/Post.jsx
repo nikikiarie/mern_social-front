@@ -21,6 +21,7 @@ const Post = ({ post, type }) => {
   console.log(friends)
   const [error,setError] = useState(null)
 
+  const token = useSelector((state)=>state.user.user.token)
 
 const isFriend =  friends.find((item)=>item._id === post.userId)
 
@@ -37,12 +38,12 @@ const likesCount = Object.keys(post.likes).length
 
   const handleFriend = (e) => {
     e.preventDefault();
-    addRemoveFriend(dispatch, userId, post.userId,setError);
+    addRemoveFriend(dispatch, userId, post.userId,setError,token);
   };
 
 const handleLikes = (e) =>{
   e.preventDefault()
-  likeDislike(dispatch,userId,post._id)
+  likeDislike(dispatch,userId,post._id,token)
   
 
 }

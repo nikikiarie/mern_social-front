@@ -17,6 +17,7 @@ const UserWidget = ({ type }) => {
   const user = useSelector((state) => state.user.user);
   console.log(user)
   const friends = useSelector((state) => state.user.user);
+  const token = useSelector((state)=>state.user.user.token)
   
   const navigate = useNavigate();
 
@@ -34,7 +35,7 @@ const UserWidget = ({ type }) => {
   const getUser = async (m,n) => {
     try {
       const res = await privateRequest.get(
-     type === "main" ? `/users/${m}` : `/users/${n}`
+     type === "main" ? `/users/${m}` : `/users/${n}`,{headers:{token:`Bearer ${token}`}}
       );
       console.log(res.data);
       setCurrentUser(res.data);

@@ -17,6 +17,8 @@ const AddPost = (type) => {
   const userId = useSelector((state) => state.user.user._id);
   const useId = useSelector((state) => state.user.user._id);
 
+  const token = useSelector((state)=>state.user.user.token)
+  console.log(token);
 const dispatch = useDispatch()
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -54,7 +56,7 @@ const dispatch = useDispatch()
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
           const post ={description,userId:userId,postPicturePath:downloadURL,picturePath:userPicture}
-          newPost(post,dispatch,paramsId,useId)
+          newPost(post,dispatch,paramsId,useId,token)
 
 
          
