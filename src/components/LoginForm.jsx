@@ -27,9 +27,9 @@ const LoginForm = ({ type }) => {
       }}>
         {({ getRootProps, getInputProps }) => (
           <section>
-            <div {...getRootProps()}>
+            <div {...getRootProps()} style={{border:"1px dotted #44434352",padding:"5px"}}>
               <input {...getInputProps()} />
-              <p>Drag 'n' drop some files here, or click to select files</p>
+              <p >Drag 'n' drop some files here, or click to select files</p>
             </div>
           </section>
         )}
