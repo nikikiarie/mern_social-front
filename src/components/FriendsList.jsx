@@ -12,6 +12,7 @@ const FriendsList = ({ type }) => {
 const {id} = useParams()
 console.log(id)
   const friends = useSelector((state) => state.user.user.friends);
+  
   console.log(friends)
   const dispatch = useDispatch()
 

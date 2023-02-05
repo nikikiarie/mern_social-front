@@ -17,12 +17,12 @@ export const logIn = async (dispatch, navigate, user) => {
   }
 };
 
-export const registerUser = async (product, navigate) => {
-  console.log(product);
+export const registerUser = async (product,setMessage) => {
+ 
   try {
     const res = await publicRequest.post("/auth/register", { ...product });
-    navigate("/login");
-    console.log(res.data);
+    setMessage(res.data)
+    console.log(res);
   } catch (err) {}
 };
 

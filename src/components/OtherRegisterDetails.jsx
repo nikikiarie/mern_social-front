@@ -1,7 +1,7 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { storage } from "../firebase";
 import { publicRequest } from "../makeRequest";
 import { registerUser } from "../redux/apiCalls";
@@ -12,9 +12,10 @@ const OtherRegisterDetails = ({ type, data }) => {
   const [occupation, setOccupation] = useState("");
   const [password, setPassword] = useState("");
   const [dataz, setDataz] = useState({});
- 
+  const [message,setMessage] =useState({})
+  console.log(message) 
 
-  const [success, setSuccess] = useState(false);
+  
   const { image, firstName, lastName } = data;
 
 
@@ -55,7 +56,7 @@ const OtherRegisterDetails = ({ type, data }) => {
           console.log('File available at', downloadURL);
           const product = { firstName, lastName,location,occupation,picturePath:downloadURL,password,email}
           
-          registerUser(product,navigate)
+          registerUser(product,setMessage)
         });
       }
     );
@@ -79,14 +80,10 @@ const OtherRegisterDetails = ({ type, data }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button onClick={handleClick}>GET STARTED</Button>
-      {success && (
+      {message && (
         <>
-          <h4>User successfully Registered</h4>
-          <Link to="/login">
-            <h5 style={{ color: "#099e97", textDecoration: "underline" }}>
-              Please Log In
-            </h5>
-          </Link>
+          <h4>{message.message}</h4>
+          
         </>
       )}
     </Container>

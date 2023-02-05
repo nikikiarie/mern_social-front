@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider } from "styled-components";
 import { Home, Profile, Login, Register } from "./pages";
+import Verified from "./pages/Verified";
 import { peristor, store } from "./redux/store";
 import { darkTheme, lightTheme } from "./theme";
 
@@ -32,6 +33,7 @@ function App() {
                   <Profile lightMode={lightMode} setLightMode={setLightMode} /> 
                 }
               />
+              <Route path="/users/:userId/verify/:token" element={<Verified/>}/>
             </Routes>
           </Provider>
         </BrowserRouter>

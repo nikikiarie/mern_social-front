@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { logIn } from "../redux/apiCalls";
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
+import { logOut } from "../redux/userSlice";
+
 
 
 const Login = () => {
@@ -10,6 +12,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const location = useLocation()
+  const user = useSelector((state) => state.user.user);
+  
+
+  console.log(location)
 
   
 
@@ -27,8 +34,7 @@ const Login = () => {
       <LoginCenterDiv>
         <LogForm>
           <Title>Welcome to SocioPedia,the Social Media For SocioPaths</Title>
-
-          <Input
+          <><Input
             placeholder="E-mail"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -36,8 +42,8 @@ const Login = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick}>LOG IN</Button>
-          <Link to="/register" ><h5 style={{color:"#099e97",textDecoration:"underline"}}>Sign Up</h5></Link>
+           <Button onClick={handleClick}>LOG IN</Button></>
+           {location?.state === 'verified' ? "" : <Link to="/register" ><h5 style={{color:"#099e97",textDecoration:"underline"}}>Sign Up</h5></Link>}
           
         </LogForm>
       </LoginCenterDiv>
